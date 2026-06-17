@@ -13,7 +13,7 @@ Recommended first test:
 - Target system: UEFI, non-CSM
 - File system: FAT32 if Rufus allows it
 - Cluster size: default
-- Image mode: ISO mode first, DD mode only if ISO mode fails
+- Image mode: DD mode is preferred for current test builds. ISO mode may boot GRUB but fail to expose `/live/filesystem.squashfs` on some machines.
 
 ## Acer AO1-431 Firmware Steps
 

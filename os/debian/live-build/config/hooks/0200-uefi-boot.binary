@@ -11,9 +11,15 @@ bootx64="${work_dir}/BOOTX64.EFI"
 mkdir -p "$(dirname "${efi_img}")"
 
 cat >"${grub_cfg}" <<'EOF'
-search --file --set=root /live/filesystem.squashfs
-set prefix=($root)/boot/grub
-configfile /boot/grub/grub.cfg
+if search --no-floppy --file --set=root /live/filesystem.squashfs; then
+  set prefix=($root)/boot/grub
+  configfile ($root)/boot/grub/grub.cfg
+fi
+
+echo "iiSU OS could not find /live/filesystem.squashfs on the boot USB."
+echo "Reflash the ISO with Rufus DD mode, then boot the UEFI USB entry again."
+echo "Visible GRUB devices:"
+ls
 EOF
 
 grub-mkstandalone \
