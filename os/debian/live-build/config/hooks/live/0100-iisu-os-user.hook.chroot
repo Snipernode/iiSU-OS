@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+set -eu
+
+if ! id iisu >/dev/null 2>&1; then
+  useradd --create-home --shell /bin/bash --groups audio,video,input,plugdev,netdev,cdrom iisu
+fi
+
+passwd -d iisu >/dev/null || true
+
+install -d /etc/systemd/system/graphical.target.wants
+ln -sf /etc/systemd/system/iisu-os-kiosk.service \
+  /etc/systemd/system/graphical.target.wants/iisu-os-kiosk.service
+
+install -d /etc/systemd/system/getty@tty1.service.d
+cat >/etc/systemd/system/getty@tty1.service.d/iisu-os-disable-getty.conf <<'EOF'
+[Unit]
+ConditionPathExists=/run/iisu-os-disable-getty
+EOF
+
+install -d -o iisu -g iisu /home/iisu/Desktop

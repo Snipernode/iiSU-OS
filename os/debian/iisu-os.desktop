@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=iiSU OS
+Comment=Start the iiSU OS shell
+Exec=/usr/local/bin/iisu-os-session
+Type=Application
+DesktopNames=iiSUOS

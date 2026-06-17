@@ -1,0 +1,21 @@
+[Unit]
+Description=iiSU OS kiosk shell
+After=systemd-user-sessions.service network.target
+Conflicts=getty@tty1.service
+
+[Service]
+User=iisu
+Group=iisu
+WorkingDirectory=/home/iisu
+Environment=HOME=/home/iisu
+Environment=XDG_SESSION_TYPE=x11
+TTYPath=/dev/tty1
+StandardInput=tty
+StandardOutput=journal
+StandardError=journal
+ExecStart=/usr/bin/xinit /usr/local/bin/iisu-os-session -- /usr/bin/Xorg :0 vt1 -nolisten tcp -keeptty
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=graphical.target

@@ -1,0 +1,64 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE/editor files
+.idea/
+.vscode/
+*.iml
+*.suo
+*.user
+*.swp
+*.swo
+
+# Logs and runtime state
+*.log
+logs/
+tmp/
+temp/
+*.pid
+
+# Build output
+build/
+dist/
+out/
+release/
+artifacts/
+*.iso
+*.img
+*.qcow2
+*.vdi
+*.vmdk
+
+# Package/dependency folders
+node_modules/
+vendor/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Secrets and local config
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+
+# User libraries and copyrighted content
+roms/
+games/
+bios/
+saves/
+userdata/
+media/cache/
+media/downloads/
+
+# iiSU OS generated data
+.iisu-os/
+iisu-os.db
+library-index.json
+scrape-cache/

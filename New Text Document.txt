@@ -1,0 +1,287 @@
+I think the spirit of what you're aiming for is good, but I'd be careful about making iiSU OS's identity revolve around taking shots at Nintendo, Sony, or Microsoft.
+
+A stronger message is:
+
+"Here's what we do differently."
+
+rather than:
+
+"Here's why they're wrong."
+
+For example, instead of:
+
+"Doing what Nintendo can't."
+
+You could have:
+
+iiSU OS by Snipernode
+
+Bringing your favorite games together, old and new.
+
+Or:
+
+iiSU OS by Snipernode
+
+Built by players, for players.
+
+Or:
+
+iiSU OS by Snipernode
+
+Keeping gaming history alive.
+
+The occasional playful jab can still be funny.
+
+For example, a rare boot message:
+
+"Don't worry. We won't ask you to buy the same game three times."
+
+Or:
+
+"Your save data belongs to you."
+
+Or:
+
+"Remember when games came with manuals? We do."
+
+Those feel more lighthearted and less hostile.
+
+As for the Steam integration, I think that's one of the most realistic long-term goals you've mentioned.
+
+Imagine:
+
+Library
+├─ Wii
+├─ GameCube
+├─ DS
+├─ 3DS
+├─ Steam
+└─ Favorites
+
+User signs into Steam.
+
+iiSU OS scans:
+
+Installed Steam games
+Steam library metadata
+Artwork
+Playtime
+
+Then merges them into the iiSU interface.
+
+So instead of:
+
+Steam
+↓
+Desktop
+↓
+Library
+↓
+Game
+
+they get:
+
+iiSU OS
+↓
+Library
+↓
+Game
+
+The game launches through Steam automatically.
+
+That's probably a more achievable goal than getting Valve to ship iiSU OS itself. A launcher or Steam plugin that imports ROMs and retro titles into a unified library is something that could genuinely appeal to Steam Deck users.
+
+And it actually matches the philosophy you've been describing:
+
+"All my games, all my memories, one place."
+
+That's a stronger selling point than competing with the major console manufacturers. The big companies are trying to sell ecosystems. iiSU OS would be trying to bring ecosystems together.
+
+No, no, these are supposed to be riffs at the companies. Because it's in response to current news titles. Like if news titles go, "ECOS and why you should pick it over the new Nintendo Switch," or "ECOS, top-rated repository outside of developer software tools," that'll cause a message like, "Number one in the business, because if you ain't us, you ain't for us." Well, maybe not like that last bit, but number one in the business, sure. And if the user, similar to these things that Steam does with a rare occasion of dropping your controller causing the uh- scream, we do something similar. If a controller has a speaker in it, it can sometimes go, Goodbye, cruel world, when falling. However, if it's something like a Wii remote, it detects whether you're playing a game or not. If you aren't, then it just doesn't do, and if you're not, it'll do a scream. But if you are, it won't detect it. It'll ignore the input.
+
+Ah, if they're tied to actual events and headlines, that's a lot different from making them permanent branding.
+
+That feels more like the old Wii, 3DS, and Steam habit of having occasional goofy messages.
+
+For example, if iiSU OS notices a major milestone:
+
+HEY!
+
+Number one in the business.
+
+Honestly, we're still trying to figure out how that happened.
+
+Thanks for sticking around.
+
+Or if a review site ranks iiSU OS highly:
+
+HEY!!
+
+Apparently people like us now.
+
+We have no idea what we're doing differently,
+so we're just going to keep doing it.
+
+Those feel more playful and self-aware.
+
+The controller scream is also exactly the kind of stupid little feature that people would post clips of online.
+
+Fall Detection
+
+Controller Lab monitors:
+
+Sudden acceleration
+Sudden freefall
+Sudden impact
+
+If:
+
+Controller Speaker = Present
+Game Input = False
+
+Then:
+
+"GOODBYE, CRUEL WORLD!"
+
+or
+
+"AAAAAAAAAAAAA!"
+
+plays through the controller speaker.
+
+But if you're actively playing something like:
+
+Wii Sports
+Nintendo Land
+Skyward Sword
+Any motion game
+
+then iiSU OS suppresses it because throwing motions are expected.
+
+So the logic becomes:
+
+Controller Falling?
+↓
+Yes
+↓
+Is game expecting motion controls?
+↓
+Yes
+→ Ignore
+
+No
+↓
+Play scream
+
+You could even have rare variants.
+
+Common
+
+"AAAAAAAAA!"
+
+Uncommon
+
+"I REGRET NOTHING!"
+
+Rare
+
+"Tell my save data... I love it..."
+
+Extremely Rare
+
+"This is why we wear wrist straps."
+
+That last one would be especially funny if it only triggers on Wii Remotes.
+
+The overall theme I'm seeing with iiSU OS is that it doesn't want to feel like a piece of software. It wants to feel like a bunch of friends hanging around a game room, occasionally making jokes, welcoming you back, and reacting to things happening around them. That's a much more memorable direction than trying to be the most technically impressive frontend.
+
+and of course will be ISU Directs. These will be public announcements that players can watch to view things like new themes, or new features being added, or in the rare cases, new games. But if a creator makes a game and decides they want to publish it on the ISU shop, they're allowed to, and if they decide to talk about it a bit, it gets added to the ISU Direct. But it's called ISU OS Direct in order to not be confused with actual ISU. And this is always an intro at the beginning where myself will say, please be advised. This is not from the actual original makers of ISU, but rather the makers of ISU OS. Any announcements that are here is not to be taken for the exact things that's going to be happening to ISU itself. Please keep that in mind and we hope you enjoy the presentation.
+
+I think that's one of the smartest ideas you've had for iiSU OS, specifically because of the disclaimer.
+
+If iiSU OS is a fork/community project built around iiSU, you really want to make it clear what comes from the original iiSU team and what comes from the iiSU OS team.
+
+An iiSU OS Direct could start with something like:
+
+Please be advised:
+
+This presentation is brought to you by the developers of iiSU OS.
+
+We are not the original creators of iiSU, nor do we represent the iiSU development team.
+
+Any announcements shown during this presentation apply only to iiSU OS and its associated projects unless otherwise stated.
+
+Please do not assume any features, updates, or releases shown here are planned for iiSU itself.
+
+With that out of the way...
+
+Welcome, welcome!
+
+We hope you enjoy the presentation.
+
+Then the presentation begins.
+
+What Appears In an iiSU OS Direct
+System Updates
+iiSU OS Version 3.0
+
+• Steam Library Support
+• New Controller Lab Features
+• New Boot Themes
+• Faster Game Scanning
+Marketplace News
+iiSU Marketplace
+
+New Physical Titles Added
+Community Theme Contest
+Monthly Giveaway
+Community Projects
+Featured Community Project
+
+Mindland
+A Nintendo Land-inspired Minecraft experience
+Developer Spotlights
+Contributor Spotlight
+
+New Wii Remote Compatibility Pack
+Created by:
+ControllerWizard42
+New Games
+
+If a creator publishes through the iiSU Marketplace:
+
+Coming Soon to iiSU Marketplace
+
+Pixel Dungeon DX
+Created by:
+RetroPixel Studios
+The Vibe
+
+The thing I would keep from Nintendo Directs isn't the format.
+
+It's the feeling.
+
+The presenter isn't saying:
+
+"Here are patch notes."
+
+They're saying:
+
+"We've been working on something cool and wanted to show you."
+
+Which matches your overall goal of iiSU OS feeling like a place people visit rather than a piece of software they launch.
+
+My Favorite Part
+
+You could actually archive every Direct inside iiSU OS.
+
+iiSU OS Direct Archive
+
+2027 Spring Direct
+2027 Summer Direct
+2027 Holiday Direct
+2028 Spring Direct
+
+So years later someone can boot up iiSU OS and watch old presentations the same way people go back and watch old Nintendo Directs today.
+
+That kind of history gives a project personality and makes users feel like they've been part of the journey.

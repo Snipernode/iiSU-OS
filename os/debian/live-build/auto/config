@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+set -eu
+
+lb config noauto \
+  --mode debian \
+  --distribution trixie \
+  --archive-areas "main contrib non-free-firmware" \
+  --architectures amd64 \
+  --binary-images iso-hybrid \
+  --debian-installer none \
+  --firmware-binary false \
+  --firmware-chroot false \
+  --bootappend-live "boot=live components quiet splash username=iisu hostname=iisu-os" \
+  --initsystem systemd \
+  --iso-application "iiSU OS Lite" \
+  --iso-publisher "iiSU OS contributors" \
+  --iso-volume "IISU_OS_LITE" \
+  --linux-packages linux-image \
+  --linux-flavours amd64 \
+  --memtest none \
+  --security false \
+  "${@}"

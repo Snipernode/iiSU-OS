@@ -1,0 +1,21 @@
+# Base packages for iiSU OS Lite.
+# Install these on a minimal Debian/Lubuntu system before enabling kiosk mode.
+
+sudo
+systemd
+dbus-user-session
+xorg
+xinit
+openbox
+chromium
+pulseaudio
+pipewire
+wireplumber
+bluetooth
+bluez
+network-manager
+curl
+unzip
+ca-certificates
+fonts-dejavu
+fonts-noto-color-emoji
