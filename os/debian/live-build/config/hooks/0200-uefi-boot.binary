@@ -27,6 +27,7 @@ grub-mkstandalone \
   -o "${bootx64}" \
   --locales="" \
   --fonts="" \
+  --modules="part_gpt part_msdos fat iso9660 ntfs search search_fs_file normal configfile echo ls linux gzio" \
   "boot/grub/grub.cfg=${grub_cfg}"
 
 mkdir -p binary/EFI/BOOT

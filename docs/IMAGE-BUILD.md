@@ -63,7 +63,7 @@ The image is emitted as a plain ISO instead of `iso-hybrid` because `isohybrid` 
 
 UEFI boot support is added by `os/debian/live-build/config/hooks/0200-uefi-boot.binary`. That hook creates `boot/grub/efi.img` with a standard `EFI/BOOT/BOOTX64.EFI` loader and also exposes the loader at `/EFI/BOOT/BOOTX64.EFI` for Rufus ISO mode.
 
-After live-build finishes, `scripts/build-iso.sh` rebuilds the final ISO with `xorriso -as mkisofs` so the boot catalog contains both the BIOS GRUB image and the UEFI EFI image. The EFI image is also appended as an EFI System Partition so Rufus DD mode and USB-style UEFI boot have a real FAT ESP to load from. This avoids relying on unsupported extension variables in the old Ubuntu-packaged live-build scripts.
+After live-build finishes, `scripts/build-iso.sh` rebuilds the final ISO with `xorriso -as mkisofs` so the boot catalog contains both the BIOS GRUB image and the UEFI EFI image. The boot catalog points at the EFI image inside the ISO for Rufus compatibility, and the same EFI image is also appended as an EFI System Partition so DD-mode USB boot has a real FAT ESP to load from. This avoids relying on unsupported extension variables in the old Ubuntu-packaged live-build scripts.
 
 ## Current Test Command
 
