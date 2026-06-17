@@ -36,6 +36,7 @@ mkdir -p "${STAGE_ROOT}"
 
 bash -n "${REPO_ROOT}/os/debian/install-iisu-os-lite.sh"
 bash -n "${REPO_ROOT}/os/debian/iisu-os-session.sh"
+bash -n "${REPO_ROOT}/os/debian/iisu-run-exe.sh"
 
 IISU_OS_ROOT="${STAGE_ROOT}" bash "${REPO_ROOT}/os/debian/install-iisu-os-lite.sh" >/tmp/iisu-os-smoke-install.log
 
@@ -43,6 +44,7 @@ assert_file "${STAGE_ROOT}/opt/iisu-os/shell/index.html"
 assert_file "${STAGE_ROOT}/opt/iisu-os/shell/styles.css"
 assert_file "${STAGE_ROOT}/opt/iisu-os/shell/app.js"
 assert_file "${STAGE_ROOT}/usr/local/bin/iisu-os-session"
+assert_file "${STAGE_ROOT}/usr/local/bin/iisu-run-exe"
 assert_file "${STAGE_ROOT}/usr/share/xsessions/iisu-os.desktop"
 assert_file "${STAGE_ROOT}/etc/systemd/system/getty@tty1.service.d/iisu-os-autologin.conf"
 assert_file "${STAGE_ROOT}/home/iisu/.bash_profile"
@@ -50,6 +52,7 @@ assert_file "${STAGE_ROOT}/home/iisu/.bash_profile"
 assert_contains "${STAGE_ROOT}/opt/iisu-os/shell/index.html" '<link rel="stylesheet" href="./styles.css">'
 assert_contains "${STAGE_ROOT}/opt/iisu-os/shell/index.html" '<script src="./app.js"></script>'
 assert_contains "${STAGE_ROOT}/usr/local/bin/iisu-os-session" '--kiosk'
+assert_contains "${STAGE_ROOT}/usr/local/bin/iisu-run-exe" 'exec wine'
 assert_contains "${STAGE_ROOT}/usr/share/xsessions/iisu-os.desktop" 'Exec=/usr/local/bin/iisu-os-session'
 assert_contains "${STAGE_ROOT}/etc/systemd/system/getty@tty1.service.d/iisu-os-autologin.conf" 'ExecStart=-/sbin/agetty --autologin iisu'
 assert_contains "${STAGE_ROOT}/home/iisu/.bash_profile" 'startx /usr/local/bin/iisu-os-session'

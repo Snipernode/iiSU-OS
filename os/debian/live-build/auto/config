@@ -6,8 +6,9 @@ lb config noauto \
   --distribution trixie \
   --archive-areas "main contrib non-free-firmware" \
   --architectures amd64 \
-  --binary-images iso-hybrid \
-  --debian-installer none \
+	--binary-images iso \
+  --bootloader grub2 \
+  --debian-installer false \
   --firmware-binary false \
   --firmware-chroot false \
   --bootappend-live "boot=live components quiet splash username=iisu hostname=iisu-os" \

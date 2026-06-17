@@ -11,6 +11,7 @@ Planned work:
 - Start a kiosk session instead of a normal desktop.
 - Launch the iiSU OS shell from `/opt/iisu-os/shell/index.html`.
 - Add emulator launch profiles later.
+- Add Windows `.exe` launch profiles through Wine.
 - Add a simple library scanner later.
 - Add update hooks later.
 
@@ -27,6 +28,7 @@ Initial shell principles:
 - No account requirement for local library usage.
 - Clear separation between iiSU OS and the original iiSU project.
 - Local games, Steam games, emulator entries, Direct archive, settings, and power controls in one UI.
+- Windows `.exe` entries route through the OS `iisu-run-exe` wrapper.
 
 First prototype:
 

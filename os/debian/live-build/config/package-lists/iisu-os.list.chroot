@@ -3,6 +3,7 @@ live-config
 systemd
 dbus-user-session
 sudo
+syslinux-utils
 network-manager
 bluetooth
 bluez
@@ -13,6 +14,8 @@ xorg
 xinit
 openbox
 chromium
+wine
+wine64
 fonts-dejavu
 fonts-noto-color-emoji
 firmware-iwlwifi

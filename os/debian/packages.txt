@@ -8,6 +8,8 @@ xorg
 xinit
 openbox
 chromium
+wine
+wine64
 pulseaudio
 pipewire
 wireplumber

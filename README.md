@@ -29,7 +29,7 @@ The shell should stay lightweight enough for this hardware. Avoid heavy desktop 
 
 - `shell/` contains the first iiSU OS shell prototype.
 - `os/debian/` contains Linux kiosk-session and installation files.
-- `docs/` contains roadmap, hardware, legal, and image-build notes.
+- `docs/` contains roadmap, hardware, legal, Windows `.exe`, and image-build notes.
 
 ## Run The Shell Prototype
 

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+efi_img="binary/boot/grub/efi.img"
+work_dir="$(mktemp -d)"
+trap 'rm -rf "${work_dir}"' EXIT
+
+grub_cfg="${work_dir}/grub-standalone.cfg"
+bootx64="${work_dir}/BOOTX64.EFI"
+
+mkdir -p "$(dirname "${efi_img}")"
+
+cat >"${grub_cfg}" <<'EOF'
+search --file --set=root /live/filesystem.squashfs
+set prefix=($root)/boot/grub
+configfile /boot/grub/grub.cfg
+EOF
+
+grub-mkstandalone \
+  -O x86_64-efi \
+  -o "${bootx64}" \
+  --locales="" \
+  --fonts="" \
+  "boot/grub/grub.cfg=${grub_cfg}"
+
+mkdir -p binary/EFI/BOOT
+cp "${bootx64}" binary/EFI/BOOT/BOOTX64.EFI
+
+rm -f "${efi_img}"
+dd if=/dev/zero of="${efi_img}" bs=1M count=16 status=none
+mkfs.vfat -n IISU_EFI "${efi_img}" >/dev/null
+mmd -i "${efi_img}" ::/EFI ::/EFI/BOOT
+mcopy -i "${efi_img}" "${bootx64}" ::/EFI/BOOT/BOOTX64.EFI

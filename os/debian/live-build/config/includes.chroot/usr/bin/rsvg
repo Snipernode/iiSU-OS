@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+format="png"
+height=""
+width=""
+args=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --format)
+      format="$2"
+      shift 2
+      ;;
+    --height)
+      height="$2"
+      shift 2
+      ;;
+    --width)
+      width="$2"
+      shift 2
+      ;;
+    *)
+      args+=("$1")
+      shift
+      ;;
+  esac
+done
+
+if [[ "${#args[@]}" -lt 2 ]]; then
+  echo "Usage: rsvg [--format png] [--height H] [--width W] input output" >&2
+  exit 1
+fi
+
+input="${args[0]}"
+output="${args[1]}"
+
+command=(rsvg-convert -f "${format}" -o "${output}")
+
+if [[ -n "${height}" ]]; then
+  command+=(-h "${height}")
+fi
+
+if [[ -n "${width}" ]]; then
+  command+=(-w "${width}")
+fi
+
+command+=("${input}")
+exec "${command[@]}"

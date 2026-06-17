@@ -24,6 +24,7 @@ fi
 
 INSTALL_DIR="$(target_path /opt/iisu-os)"
 SESSION_BIN="$(target_path /usr/local/bin/iisu-os-session)"
+EXE_RUNNER_BIN="$(target_path /usr/local/bin/iisu-run-exe)"
 XSESSION_DIR="$(target_path /usr/share/xsessions)"
 SYSTEMD_GETTY_DIR="$(target_path /etc/systemd/system/getty@tty1.service.d)"
 HOME_DIR="$(target_path "/home/${IISU_USER}")"
@@ -43,6 +44,7 @@ cp -R "${REPO_ROOT}/shell/." "${INSTALL_DIR}/shell/"
 
 install -d "$(dirname "${SESSION_BIN}")"
 install -m 0755 "${REPO_ROOT}/os/debian/iisu-os-session.sh" "${SESSION_BIN}"
+install -m 0755 "${REPO_ROOT}/os/debian/iisu-run-exe.sh" "${EXE_RUNNER_BIN}"
 install -d "${XSESSION_DIR}"
 install -m 0644 "${REPO_ROOT}/os/debian/iisu-os.desktop" "${XSESSION_DIR}/iisu-os.desktop"
 

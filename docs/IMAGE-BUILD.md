@@ -51,6 +51,20 @@ Automatic firmware discovery is also disabled because this live-build version tr
 
 The live image pins `--initsystem systemd` so live-build installs `live-config-systemd` instead of the sysvinit backend.
 
+The Debian installer is disabled with `--debian-installer false`; `none` is not accepted by the Ubuntu-packaged live-build version.
+
+The build script also rewrites live-build's ISOLINUX template during the build because the packaged template points at old Syslinux paths. The replacement files come from the WSL packages `isolinux` and `syslinux-common`.
+
+A small `/usr/bin/rsvg` compatibility wrapper is included because this live-build version calls the removed `rsvg` command while modern Debian provides `rsvg-convert`.
+
+The live image uses GRUB2 instead of Syslinux or legacy GRUB because the Ubuntu-packaged live-build Syslinux stage still assumes legacy gfxboot files, and legacy GRUB still assumes removed `stage2_eltorito` files.
+
+The image is emitted as a plain ISO instead of `iso-hybrid` because `isohybrid` is a Syslinux post-processor and fails against the GRUB2 boot image. Rufus can still write this ISO for UEFI testing.
+
+UEFI boot support is added by `os/debian/live-build/config/hooks/0200-uefi-boot.binary`. That hook creates `boot/grub/efi.img` with a standard `EFI/BOOT/BOOTX64.EFI` loader and also exposes the loader at `/EFI/BOOT/BOOTX64.EFI` for Rufus ISO mode.
+
+After live-build finishes, `scripts/build-iso.sh` rebuilds the final ISO with `xorriso -as mkisofs` so the boot catalog contains both the BIOS GRUB image and the UEFI EFI image. This avoids relying on unsupported extension variables in the old Ubuntu-packaged live-build scripts.
+
 ## Current Test Command
 
 On Windows with WSL installed:
