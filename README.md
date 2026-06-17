@@ -1,73 +1,96 @@
 # iiSU OS
 
-iiSU OS is a community operating-system shell concept for dedicated retro and PC game machines.
+iiSU OS is a community-made console-style operating system project for low-end PCs.
 
-This project is not the original iiSU Android frontend, is not made by the iiSU team, and does not represent their roadmap. The goal here is to build a Linux-based system that feels like a console: boot directly into a game-first shell, keep the desktop hidden, and make the whole machine feel like one coherent gaming environment.
+The goal is simple: turn a small laptop or mini PC into a dedicated game-first machine that boots straight into an iiSU-style shell instead of a normal desktop.
 
-## Current Direction
+## Important Notice
 
-This repo is starting directly at stages 3 and 4:
+iiSU OS is not the original iiSU Android frontend.
 
-1. Build an installable iiSU OS Lite setup for low-end PCs.
-2. Build a native iiSU OS shell instead of depending on Android.
+This project is not made by the original iiSU team, does not represent them, and does not announce features for iiSU itself. It is a separate community OS project inspired by the idea of a clean, controller-friendly gaming interface.
 
-Stages 1 and 2, the Android-x86 prototype and launcher-only appliance mode, are intentionally skipped.
+## What It Does Right Now
 
-## Target Machine
+- Boots into a full-screen iiSU OS shell.
+- Targets low-end x86-64 PCs like the Acer Aspire One AO1-431 / Cloudbook 14 class hardware.
+- Builds a Rufus-testable Debian-based ISO.
+- Supports UEFI boot with Secure Boot disabled.
+- Includes Wine support for 64-bit Windows `.exe` files.
+- Keeps games, ROMs, BIOS files, and user content out of the repo.
 
-Initial target:
+## Target Hardware
+
+The first target machine is:
 
 - Acer Aspire One AO1-431 / Cloudbook 14 class hardware
 - Intel Celeron N3050 or similar
 - 2 GB RAM
-- 32 GB or 64 GB eMMC
+- 32 GB or 64 GB eMMC storage
 - 1366x768 display
 
-The shell should stay lightweight enough for this hardware. Avoid heavy desktop stacks unless they are strictly needed.
+Other x86-64 PCs may work, but this project is being shaped around lightweight hardware first.
 
-## Repo Layout
+## Try It On A USB Drive
 
-- `shell/` contains the first iiSU OS shell prototype.
-- `os/debian/` contains Linux kiosk-session and installation files.
-- `docs/` contains roadmap, hardware, legal, Windows `.exe`, and image-build notes.
-
-## Run The Shell Prototype
-
-Open `shell/index.html` in a browser.
-
-On the target OS image, the kiosk session will launch the same shell full-screen from `/opt/iisu-os/shell/index.html`.
-
-## Test The Install Layout
-
-On Windows with WSL installed:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\tests\smoke-test.ps1
-```
-
-On Linux or WSL directly:
-
-```bash
-bash tests/smoke-test.sh
-```
-
-The smoke test stages a fake install at `build/stage-root`. It does not modify bootloaders, disks, users, or system services.
-
-## Build A Rufus-Testable ISO
-
-On Windows with WSL installed:
+Build the ISO from Windows with WSL installed:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\build-iso-wsl.ps1
 ```
 
-Expected output:
+The ISO will be created at:
 
 ```text
 dist/iisu-os-lite-amd64-trixie.iso
-dist/iisu-os-lite-amd64-trixie.iso.sha256
 ```
+
+Use Rufus with:
+
+- Boot selection: the iiSU OS ISO
+- Partition scheme: GPT
+- Target system: UEFI, non-CSM
+- File system: FAT32 if available
+- Image mode: ISO mode first, DD mode only if ISO mode fails
+
+On the Acer, disable Secure Boot, enable the `F12` boot menu, then choose the USB option that starts with `UEFI:`.
+
+## Windows EXE Support
+
+iiSU OS runs Windows `.exe` files through Wine:
+
+```bash
+iisu-run-exe /path/to/program.exe
+```
+
+This is not CPU emulation. Wine runs x86-64 Windows programs on the same x86-64 processor through a Windows compatibility layer.
+
+Current limitation: this build targets 64-bit Windows `.exe` files. Many older 32-bit games need Wine32/i386 multiarch support, which is planned as a later milestone.
+
+## What Is Not Included
+
+- No games.
+- No ROMs.
+- No BIOS files.
+- No Steam account setup.
+- No Secure Boot signing yet.
+- No guarantee that every Windows `.exe` works.
+
+## Project Status
+
+This is an early iiSU OS Lite prototype. It is not ready to replace a daily-use operating system.
+
+The current milestone is to prove that a low-end PC can boot directly into a console-like shell, launch local content, and support a future game library interface.
+
+## Useful Docs
+
+- [Image Build Notes](docs/IMAGE-BUILD.md)
+- [Rufus UEFI Test Plan](docs/RUFUS-UEFI-TEST.md)
+- [Windows EXE Support](docs/WINDOWS-EXE-SUPPORT.md)
+- [Acer AO1-431 Hardware Notes](docs/HARDWARE-AO1-431.md)
+- [Legal Notice](docs/LEGAL-NOTICE.md)
+- [Roadmap](docs/ROADMAP.md)
 
 ## License
 
-This repository is licensed under the MIT License. See `LICENSE`.
+iiSU OS is licensed under the MIT License. See [LICENSE](LICENSE).
